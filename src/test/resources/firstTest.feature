@@ -1,4 +1,6 @@
 Feature: E-commerce page
+
+  @one
   Scenario: User should be able to login using valid credentials
     Given User is in login page
     When enters valid credentials
