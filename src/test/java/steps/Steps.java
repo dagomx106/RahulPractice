@@ -16,17 +16,29 @@ public class Steps {
 
     public static WebDriver driver;
 
-    @Before
-    public void setup(){
+    //We can use Before and After for executing setup and tearDown in each scenario
+//    @Before
+//    public void setup(){
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
+//    }
+//
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
+
+
+    @Given ("browser is been opened and ready")
+    public void browser_been_opened_and_ready(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
     }
 
-    @After
-    public void tearDown(){
-        driver.quit();
-    }
+
+
 
     @Given("User is in login page")
     public void user_is_in_login_page() {

@@ -1,5 +1,8 @@
 Feature: E-commerce page
 
+  Background: Browser have to be open and ready
+    Given browser is been opened and ready
+
   @one
   Scenario Outline: User should be able to login using valid credentials
     Given User is in login page
