@@ -1,5 +1,7 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,11 +16,21 @@ public class Steps {
 
     public static WebDriver driver;
 
-    @Given("User is in login page")
-    public void user_is_in_login_page() {
+    @Before
+    public void setup(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
+    }
+
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
+
+    @Given("User is in login page")
+    public void user_is_in_login_page() {
+
         driver.get("https://rahulshettyacademy.com/angularpractice/#");
         System.out.println("user is in login page");
     }
@@ -45,14 +57,10 @@ public class Steps {
     @And("page gets closed")
     public void pageGetsClosed() {
         System.out.println("Page gets closed");
-        driver.quit();
     }
 
     @Given("User is in product page")
     public void user_in_product_page() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
         driver.get("https://rahulshettyacademy.com/angularpractice/shop");
         System.out.println("user is in product page");
     }
@@ -79,6 +87,5 @@ public class Steps {
     public void user_clicks_checkoutButton() {
         driver.findElement(By.xpath("//button[normalize-space()='Checkout']")).click();
         System.out.println("Clicks checkout button");
-        driver.quit();
     }
 }
