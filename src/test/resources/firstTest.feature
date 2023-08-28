@@ -1,12 +1,16 @@
 Feature: E-commerce page
 
   @one
-  Scenario: User should be able to login using valid credentials
+  Scenario Outline: User should be able to login using valid credentials
     Given User is in login page
-    When enters valid credentials
+    When user enters valid <username> and <password>
     And clicks submit button
     Then page displays a successful message
     And page gets closed
+    Examples:
+      | username | password |
+      |name1     |pass1      |
+      |try2      |pass2      |
 
   Scenario: User is able to add products to cart and checkout
     Given User is in product page

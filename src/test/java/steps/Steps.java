@@ -23,10 +23,10 @@ public class Steps {
         System.out.println("user is in login page");
     }
 
-    @When("enters valid credentials")
-    public void enters_valid_credentials() {
-        driver.findElement(By.xpath("//div[@class='form-group']//input[@name='name']")).sendKeys("Practice");
-        driver.findElement(By.xpath("//input[@id='exampleInputPassword1']")).sendKeys("password");
+    @When("^user enters valid (.*) and (.*)$")
+    public void userEntersValidUsernameAndPassword(String username, String password) {
+        driver.findElement(By.xpath("//div[@class='form-group']//input[@name='name']")).sendKeys(username);
+        driver.findElement(By.xpath("//input[@id='exampleInputPassword1']")).sendKeys(password);
         System.out.println("user enters valid credentials");
     }
 
